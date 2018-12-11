@@ -59,42 +59,26 @@
 
 				<?php
 
-					$landlordid = $_POST['landlordid'];
-
-					$sql = "SELECT Tenant_ID FROM Lan_Ten WHERE Landlord_ID = '$landlordid'";
-					$result1 = $conn->query($sql) or die($conn->error);
-
-
-				  	if ($result1->num_rows > 0) {
-				    // output data of each row
-					    while($row1 = $result1->fetch_assoc()) {
-					        $tenantid = $row1["Tenant_ID"];
-
-
-						$sql1 = "SELECT Tenant_FirstName, Tenant_LastName, Tenant_Age FROM Tenant WHERE Tenant_ID = '$tenantid'";
-						$result = $conn->query($sql1);
-
-								    
-					      	while($row = $result->fetch_assoc()) {
-        						echo '<tr>';
-									    echo  '<td>' . $row['Tenant_FirstName'] . '</td>';
-									    echo  '<td>' . $row['Tenant_LastName'] . '</td>';
-									    echo  '<td>' . $row['Tenant_Age'] . '</td>';
-								echo  '</tr>'; 
-
-    						}
-
-			    		
-
-		    			}
-					} else {
-					    echo "0 results";
-					}
-
-
-
-
-					
+					$sql = "SELECT Tenant_ID, Tenant_FirstName,Tenant_LastName,Tenant_Age,Tenant_Gender FROM Tenant";
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) 
+					{
+					    while($row = $result->fetch_assoc()) 
+						{
+					        echo "<tr>";
+							echo "<td>" . $row['Tenant_FirstName'] . " " . $row['Tenant_LastName'] . "</td>";
+							echo "<td>" . $row['Tenant_Age'] . "</td>";
+							if ($row["Tenant_Gender"] == 0)
+							{
+								echo "<td> Male </td>";
+							}
+							else if ($row["Tenant_Gender"] == 1)
+							{
+								echo "<td> Female </td>";
+							}
+							echo "</tr>";
+					    }
+					}					
 				?>
 
 
@@ -102,7 +86,7 @@
 					</table>
 					</div>
 					  <div class="card-body">
-					    <a href="#" class="card-link">List Tenants</a>
+					    <a href="tenant.php" class="card-link">List Tenants</a>
 					  </div>
 					</div>
 				</div>
@@ -173,7 +157,7 @@
 
 					  </div>	
 					  <div class="card-body">
-					    <a href="#" class="card-link">List Apartments</a>
+					    <a href="apartment.php" class="card-link">List Apartments</a>
 					  </div>
 					</div>
 
