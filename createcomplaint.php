@@ -49,27 +49,27 @@
 
 <div class="container">
 
-	<form action="./savecomplaint" method="post">
+	<form action="./savecomplaint.php" method="post">
 	  <div class="form-group">
 	    <label>Complaint / Issue</label>
-	    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+	    <textarea class="form-control" rows="3" name="complaint"></textarea>
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleFormControlTextarea1">Day</label>
-	    <input class="form-control" id="exampleFormControlTextarea1"></input>
+	    <label>Day</label>
+	    <input class="form-control" name="day"></input>
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleFormControlTextarea2">Month</label>
-	    <input class="form-control" id="exampleFormControlTextarea2"></input>
+	    <label>Month</label>
+	    <input class="form-control" name="month"></input>
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleFormControlTextarea3">Year</label>
-	    <input class="form-control" id="exampleFormControlTextarea3"></input>
+	    <label>Year</label>
+	    <input class="form-control" name="year"></input>
 	  </div>
 	  <div class="form-group">
-	    <input class="form-control" value="<?php echo $_POST['tenantid']; ?>"></input>
+	    <input class="form-control" name="tenantid" value="<?php echo $_POST['tenantid']; ?>"></input>
 	  </div>
-	  <button type="button" class="btn btn-primary">Submit</button>
+	  <button type="submit" class="btn btn-primary">Submit</button>
 
 	</form>
 

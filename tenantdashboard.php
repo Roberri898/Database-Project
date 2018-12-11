@@ -33,8 +33,6 @@
 		?>
 
 
-
-
 <body>
 
 
@@ -153,9 +151,10 @@
 				    <li class="list-group-item"><?php echo $tenantLastName ?></li>
 				  </ul>
 				  <div class="card-body">
-				    <a href="#" class="card-link">View Complaints</a><br>
+				    <a href="#" class="card-link" onclick="tenantlistcomplaints();">View Complaints</a><br>
 				    <a href="#" class="card-link">View Profile</a><br>
-				    <a href="#" class="card-link" onclick="tenantlistpayments();">Payments</a>
+				    <a href="#" class="card-link" onclick="tenantlistpayments();">View Payments</a>
+
 				  </div>
 				</div>
 
@@ -184,24 +183,28 @@
 
 	</div>
 
-	<form action="./createcomplaint.php" method="post" id="tenant_id">
+	<div class="form_redirects" style="display:none;">
 
-		<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
-		
-	</form>
+		<form action="./createcomplaint.php" method="post" id="tenant_id">
 
-	<form action="./createcomplaint.php" method="post" id="tenant_id">
+			<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
+			
+		</form>
 
-		<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
-		
-	</form>
+		<form action="./tenantlistpayments.php" method="post" id="tenant_payments">
 
-	<form action="./tenantlistpayments.php" method="post" id="tenant_payments">
+			<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
+			
+		</form>
 
-		<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
-		
-	</form>
+		<form action="./tenantlistcomplaints.php" method="post" id="tenant_complaints">
 
+			<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
+			
+		</form>
+
+
+	</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -210,13 +213,18 @@
 <script type="text/javascript">
 	
 	function createcomplaint(){
-		document.getElementById("tenant_id").submit();
+		document.getElementById("tenant_complaints").submit();
 
 	}
 
 	function tenantlistpayments(){
 		document.getElementById("tenant_payments").submit();
 
+	}
+
+	function tenantlistcomplaints(){
+
+		document.getElementById("tenant_complaints").submit();
 	}
 
 
