@@ -127,7 +127,7 @@
 				</div>       
 			</div>
 			<div class="container">
-				<form action="saveapartment.php?apid=$apid" method="post">
+				<form action="saveapartment.php?apid=<?php echo $apid; ?>" method="post">
 				  <div class="form-group">
 				  	<div class="row">
 				  		<div class="col-sm">
@@ -181,11 +181,11 @@
 							<input type="" name="occ" value= "<?php echo $var8; ?>">
 						</div>	
 					</div>        
-				  </div>
-				  <div class="container linkbutton">
-				  	<button type="submit" class="btn btn-primary">Submit</button>
-				  </div>
-				  <?php $conn->close(); ?>
+				</div>
+				<div class="container linkbutton">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+				<?php $conn->close(); ?>
 				</form>
 			</div>			
 		</body>
