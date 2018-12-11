@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Tenant Page</title>
+		<title>Apartment Maintenance</title>
 		<title></title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<style type="text/css">
@@ -24,6 +24,7 @@
 				background-color: rgb(179, 179, 255);
 			}
 		</style>
+		Maintainance<br>
 		<?php
 			$servername = "localhost";
 			$username = "";
@@ -34,41 +35,47 @@
 			if ($conn->connect_error)
 			    die("Connection failed: " . $conn->connect_error);
 
-			echo "TENANTS<br>";
-			$sql = "SELECT Tenant_ID, Tenant_FirstName,Tenant_LastName,Tenant_Age,Tenant_Gender FROM Tenant";
+			$sql = "SELECT M.Maintenance_ID, M.Maintenance_Day, M.Maintenance_Month, M.Maintenance_Year,M.Maintenance_Reason,M.Maintenance_Maintained, A.Apartment_ID, A.Apartment_Street, A.Apartment_Number, A.Apartment_StreetNumber, AM.AM_A, AM.AM_M FROM Maintainance as M, Apartment as A, Apar_Main as AM";
 			$result = $conn->query($sql);
 			echo "<table border='1'>
 				<tr>
-				<th>Name</th>
-				<th>Age</th>
-				<th>Gender</th>
+				<th>Apartment</th>
+				<th>Date</th>
+				<th>Maintained?</th>
+				<th>Reason</th>
 				</tr>";
 			if ($result->num_rows > 0) 
 			{
 			    while($row = $result->fetch_assoc()) 
 				{
-			        echo "<tr>";
-					echo "<td>" . $row['Tenant_FirstName'] . " " . $row['Tenant_LastName'] . "</td>";
-					echo "<td>" . $row['Tenant_Age'] . "</td>";
-					if ($row["Tenant_Gender"] == 0)
-					{
-						echo "<td> Male </td>";
-					}
-					else if ($row["Tenant_Gender"] == 1)
-					{
-						echo "<td> Female </td>";
-					}
-					echo "</tr>";
+					if (($row['Apartment_ID'] == $row['AM_A']) && ($row['Maintenance_ID'] == $row['AM_M']))
+				    {
+						echo "<tr>";
+						echo "<td>" . $row['Apartment_Number'] . " " . $row['Apartment_StreetNumber'] . " " . $row['Apartment_Street'] . "</td>";
+				        echo "<td>" . $row["Maintenance_Month"]. "/" . $row["Maintenance_Day"]. "/" . $row["Maintenance_Year"] . "</td>";
+						if ($row["Maintenance_Maintained"] == 1)
+						{
+							echo "<td> Yes </td>";
+						}
+						else
+						{
+							echo "<td> No </td>";
+						}
+						echo "<td>" . $row["Maintenance_Reason"]. "</td>";
+						echo "</tr>";
+					}	
 			    }
 			} 
 			else 
 			{
 			    echo "0 results<br>------------------------------------------------<br>";
 			}
-			echo "</div></div></div>";	
+			echo "</div></div></div>";
+			
 
 			$conn->close();
 			?>
 	<body>
+	<a href= 'apartment.php'> Back to Apartments </a>
 	</body>
 </html>

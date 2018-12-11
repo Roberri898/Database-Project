@@ -153,9 +153,15 @@
 				    <li class="list-group-item"><?php echo $tenantLastName ?></li>
 				  </ul>
 				  <div class="card-body">
+<<<<<<< HEAD
 				    <a href="#" class="card-link" onclick="tenantlistcomplaints();">View Complaints</a><br>
 				    <a href="#" class="card-link">View Profile</a><br>
 				    <a href="#" class="card-link" onclick="tenantlistpayments();">View Payments</a>
+=======
+				    <a href="#" class="card-link">View Complaints</a><br>
+				    <a href="#" class="card-link">View Profile</a><br>
+				    <a href="#" class="card-link" onclick="tenantlistpayments();">Payments</a>
+>>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
 				  </div>
 				</div>
 
@@ -174,6 +180,12 @@
 				    <li class="list-group-item"><?php echo $apartmentStreetNumber ?></li>
 				    <li class="list-group-item"><?php echo $apartmentCity ?></li>
 				  </ul>
+<<<<<<< HEAD
+=======
+				  <div class="card-body">
+				    <a href="#" class="card-link" onclick="createcomplaint();">Create Complaint</a>
+				  </div>
+>>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
 				</div>
 			</div>
 
@@ -199,12 +211,15 @@
 		
 	</form>
 
+<<<<<<< HEAD
 	<form action="./tenantlistcomplaints.php" method="post" id="tenant_complaints">
 
 		<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
 		
 	</form>
 
+=======
+>>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -222,11 +237,14 @@
 
 	}
 
+<<<<<<< HEAD
 	function tenantlistcomplaints(){
 
 		document.getElementById("tenant_complaints").submit();
 	}
 
+=======
+>>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
 
 </script>
 

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Tenant Page</title>
+		<title>Apartment List</title>
 		<title></title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<style type="text/css">
@@ -24,6 +24,7 @@
 				background-color: rgb(179, 179, 255);
 			}
 		</style>
+		Apartment<br>
 		<?php
 			$servername = "localhost";
 			$username = "";
@@ -34,7 +35,6 @@
 			if ($conn->connect_error)
 			    die("Connection failed: " . $conn->connect_error);
 
-			echo "Apartment<br>";
 			$sql = "SELECT Apartment_ID, Apartment_Street,Apartment_Number,Apartment_StreetNumber,Apartment_City,Apartment_State,Apartment_County,Apartment_ApartmentPrice,Apartment_Occupied FROM Apartment";
 			$result = $conn->query($sql);
 			echo "<table border='1'>
@@ -71,10 +71,14 @@
 			{
 			    echo "0 results<br>------------------------------------------------<br>";
 			}
-			echo "</div></div></div>";	
+			echo "</div></div></div>";
+
 
 			$conn->close();
 			?>
 	<body>
+	<a href= 'features.php'> See Features </a>
+	<br>
+	<a href= 'maintenance.php'> See Maintenance </a>
 	</body>
 </html>
