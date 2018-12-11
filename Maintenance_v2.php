@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Apartment List</title>
+		<title>Maintenance List</title>
 		<title></title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<style type="text/css">
@@ -38,13 +38,9 @@
 			}
 		</style>
 		<body>
-			<h2 style="margin-bottom:15px;">Apartments</h2>
+			<h2 style="margin-bottom:15px;">Maintenance</h2>
 			<div class="container linkbutton">
-				<a class="btn btn-primary" href="landlorddashboard.php" >Back to Landlord Dashboard</a>
-			</div>
-			<div class="container linkbutton">
-				<a class="btn btn-primary" href="features_v2.php" >Features</a>
-				<a class="btn btn-primary" href="maintenance_v2.php" >Maintenance</a>
+				<a class="btn btn-primary" href="apartment.php" >Back to Apartment</a>
 			</div>
 			<?php
 				$servername = "localhost";
@@ -61,38 +57,37 @@
 				  	<table class= "table" border='1'>
 				  		<thread>
 							<tr>
-								<th scope= "col">Address</th>
-								<th scope= "col">City</th>
-								<th scope= "col">State</th>
-								<th scope= "col">County</th>
-								<th scope= "col">Price</th>
-								<th scope= "col">Occupied</th>
+								<th scope= "col">Apartment</th>
+								<th scope= "col">Date</th>
+								<th scope= "col">Maintained?</th>
+								<th scope= "col">Reason</th>
 							</tr>
 						</thread>
 						<tbody>	
 							<?php
-								$sql = "SELECT Apartment_ID, Apartment_Street,Apartment_Number,Apartment_StreetNumber,Apartment_City,Apartment_State,Apartment_County,Apartment_ApartmentPrice,Apartment_Occupied FROM Apartment";
+								$sql = "SELECT M.Maintenance_ID, M.Maintenance_Day, M.Maintenance_Month, M.Maintenance_Year,M.Maintenance_Reason,M.Maintenance_Maintained, A.Apartment_ID, A.Apartment_Street, A.Apartment_Number, A.Apartment_StreetNumber, AM.AM_A, AM.AM_M FROM Maintainance as M, Apartment as A, Apar_Main as AM";
 								$result = $conn->query($sql);
 								if ($result->num_rows > 0) 
 								{
-								    while($row = $result->fetch_assoc()) 
+								   while($row = $result->fetch_assoc()) 
 									{
-							        	echo "<tr>";
-										echo "<td>" . $row['Apartment_Number'] . " " . $row['Apartment_StreetNumber'] . " " . $row['Apartment_Street'] . "</td>";
-										echo "<td>" . $row['Apartment_City'] . "</td>";
-										echo "<td>" . $row['Apartment_State'] . "</td>";
-										echo "<td>" . $row['Apartment_County'] . "</td>";
-										echo "<td> $" . $row['Apartment_ApartmentPrice'] . "</td>";
-										if ($row["Apartment_Occupied"] == 0)
-										{
-											echo "<td> Yes </td>";
+										if (($row['Apartment_ID'] == $row['AM_A']) && ($row['Maintenance_ID'] == $row['AM_M']))
+									    {
+											echo "<tr>";
+											echo "<td>" . $row['Apartment_Number'] . " " . $row['Apartment_StreetNumber'] . " " . $row['Apartment_Street'] . "</td>";
+									        echo "<td>" . $row["Maintenance_Month"]. "/" . $row["Maintenance_Day"]. "/" . $row["Maintenance_Year"] . "</td>";
+											if ($row["Maintenance_Maintained"] == 1)
+											{
+												echo "<td> Yes </td>";
+											}
+											else
+											{
+												echo "<td> No </td>";
+											}
+											echo "<td>" . $row["Maintenance_Reason"]. "</td>";
+											echo '<td><a href="maintenanceedit.php?mid='. $row['Maintenance_ID']. '">EDIT</a></td>';
+											echo "</tr>";
 										}
-										else if ($row["Apartment_Occupied"] == 1)
-										{
-											echo "<td> No </td>";
-										}
-										echo '<td><a href="apartmentedit.php?apid='. $row['Apartment_ID']. '">EDIT</a></td>';
-										echo "</tr>";
 								    }
 								} 
 								else 

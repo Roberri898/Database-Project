@@ -38,13 +38,9 @@
 			}
 		</style>
 		<body>
-			<h2 style="margin-bottom:15px;">Apartments</h2>
+			<h2 style="margin-bottom:15px;">Features</h2>
 			<div class="container linkbutton">
-				<a class="btn btn-primary" href="landlorddashboard.php" >Back to Landlord Dashboard</a>
-			</div>
-			<div class="container linkbutton">
-				<a class="btn btn-primary" href="features_v2.php" >Features</a>
-				<a class="btn btn-primary" href="maintenance_v2.php" >Maintenance</a>
+				<a class="btn btn-primary" href="apartment.php" >Back to Apartment</a>
 			</div>
 			<?php
 				$servername = "localhost";
@@ -61,38 +57,34 @@
 				  	<table class= "table" border='1'>
 				  		<thread>
 							<tr>
-								<th scope= "col">Address</th>
-								<th scope= "col">City</th>
-								<th scope= "col">State</th>
-								<th scope= "col">County</th>
-								<th scope= "col">Price</th>
-								<th scope= "col">Occupied</th>
+								<th scope= "col">Apartment</th>
+								<th scope= "col">Square Footage</th>
+								<th scope= "col">Bedrooms</th>
+								<th scope= "col">Bathrooms</th>
+								<th scope= "col">Pool</th>
+								<th scope= "col">Amenities</th>
 							</tr>
 						</thread>
 						<tbody>	
 							<?php
-								$sql = "SELECT Apartment_ID, Apartment_Street,Apartment_Number,Apartment_StreetNumber,Apartment_City,Apartment_State,Apartment_County,Apartment_ApartmentPrice,Apartment_Occupied FROM Apartment";
+								$sql = "SELECT A.Apartment_ID, A.Apartment_Street, A.Apartment_Number, A.Apartment_StreetNumber, F.Features_ID, F.Features_SquareFootage, F.Features_Bedrooms, F.Features_Bathrooms, F.Features_Pool, F.Features_Amenities, AF.FA_F, AF.FA_A FROM Features as F, Apartment as A, apar_feat as AF";
 								$result = $conn->query($sql);
 								if ($result->num_rows > 0) 
 								{
 								    while($row = $result->fetch_assoc()) 
 									{
-							        	echo "<tr>";
-										echo "<td>" . $row['Apartment_Number'] . " " . $row['Apartment_StreetNumber'] . " " . $row['Apartment_Street'] . "</td>";
-										echo "<td>" . $row['Apartment_City'] . "</td>";
-										echo "<td>" . $row['Apartment_State'] . "</td>";
-										echo "<td>" . $row['Apartment_County'] . "</td>";
-										echo "<td> $" . $row['Apartment_ApartmentPrice'] . "</td>";
-										if ($row["Apartment_Occupied"] == 0)
-										{
-											echo "<td> Yes </td>";
+										if (($row['Apartment_ID'] == $row['FA_A']) && ($row['Features_ID'] == $row['FA_F']))
+									    {
+									        echo "<tr>";
+									        echo "<td>" . $row['Apartment_Number'] . " " . $row['Apartment_StreetNumber'] . " " . $row['Apartment_Street'] . "</td>";
+											echo "<td>" . $row["Features_SquareFootage"] . "</td>";
+											echo "<td>" . $row["Features_Bedrooms"] . "</td>";
+											echo "<td>" . $row["Features_Bathrooms"] . "</td>";
+											echo "<td>" . $row["Features_Pool"] . "</td>";
+											echo "<td>" . $row["Features_Amenities"] . "</td>";
+											echo '<td><a href="featuresedit.php?fid='. $row['Features_ID']. '">EDIT</a></td>';
+											echo "</tr>";
 										}
-										else if ($row["Apartment_Occupied"] == 1)
-										{
-											echo "<td> No </td>";
-										}
-										echo '<td><a href="apartmentedit.php?apid='. $row['Apartment_ID']. '">EDIT</a></td>';
-										echo "</tr>";
 								    }
 								} 
 								else 
