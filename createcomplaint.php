@@ -49,7 +49,6 @@
 
 <div class="container">
 
-<<<<<<< HEAD
 	<form action="./savecomplaint.php" method="post">
 	  <div class="form-group">
 	    <label>Complaint / Issue</label>
@@ -71,29 +70,6 @@
 	    <input class="form-control" name="tenantid" value="<?php echo $_POST['tenantid']; ?>"></input>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
-=======
-	<form action="./savecomplaint" method="post">
-	  <div class="form-group">
-	    <label>Complaint / Issue</label>
-	    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-	  </div>
-	  <div class="form-group">
-	    <label for="exampleFormControlTextarea1">Day</label>
-	    <input class="form-control" id="exampleFormControlTextarea1"></input>
-	  </div>
-	  <div class="form-group">
-	    <label for="exampleFormControlTextarea2">Month</label>
-	    <input class="form-control" id="exampleFormControlTextarea2"></input>
-	  </div>
-	  <div class="form-group">
-	    <label for="exampleFormControlTextarea3">Year</label>
-	    <input class="form-control" id="exampleFormControlTextarea3"></input>
-	  </div>
-	  <div class="form-group">
-	    <input class="form-control" value="<?php echo $_POST['tenantid']; ?>"></input>
-	  </div>
-	  <button type="button" class="btn btn-primary">Submit</button>
->>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
 
 	</form>
 

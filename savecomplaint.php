@@ -3,7 +3,6 @@
 <head>
 	<title></title>
 </head>
-<<<<<<< HEAD
 
 <?php
 	$servername = "localhost";
@@ -17,8 +16,6 @@
 
 	 mysqli_select_db($conn, $dbname) or die( mysqli_error($conn));
 ?>
-=======
->>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
 <body>
 
 
@@ -26,8 +23,6 @@
 	<?php 
 
 
-
-<<<<<<< HEAD
 	$complaint = $_POST["complaint"];
 	$day = $_POST["day"];
 	$month = $_POST["month"];
@@ -44,17 +39,12 @@
 			}
 
 			$conn->close();
-=======
-
-
->>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
 
 
 
 
 	?>
 
-<<<<<<< HEAD
 <form action="./tenantlistcomplaints.php" method="post" id="redirect">
 	
 	<input type="" name="tenantid" value="<?php echo $_POST['tenantid']; ?>">
@@ -70,9 +60,6 @@
 
 
 </script>
-=======
->>>>>>> d3b0ce2f54f2ce365a96aac58b4b20281bd21407
-
 
 
 </body>
