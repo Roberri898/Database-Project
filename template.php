@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Database Demo</title>
+		<title>Create Maintenance</title>
 	</head>
 		<?php
 			$servername = "localhost";
-			$username = "<username>";
-			$password = "<password>";
+			$username = "root";
+			$password = "";
 			$dbname = "landlord";
 			$conn = new mysqli($servername, $username, $password, $dbname);
 
