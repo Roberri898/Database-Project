@@ -26,7 +26,7 @@
 		</style>
 		<?php
 			$servername = "localhost";
-			$username = "";
+			$username = "root";
 			$password = "";
 			$dbname = "landlord";
 			$conn = new mysqli($servername, $username, $password, $dbname);

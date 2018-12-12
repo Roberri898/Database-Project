@@ -86,7 +86,8 @@
 					</table>
 					</div>
 					  <div class="card-body">
-					    <a href="tenant.php" class="card-link">List Tenants</a>
+					    <a href="listtenants.php" class="card-link">List Tenants</a>
+					    <a href="listpayments.php" class="card-link">List Payments</a>
 					  </div>
 					</div>
 				</div>
