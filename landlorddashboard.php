@@ -90,8 +90,8 @@
 						  <thead>
 						    <tr>
 						      <th scope="col">First</th>
-						      <th scope="col">Last</th>
 						      <th scope="col">Age</th>
+						      <th scope="col">Gender</th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -125,8 +125,10 @@
 					</table>
 					</div>
 					  <div class="card-body">
-					    <a href="listtenants.php" class="card-link">List Tenants</a>
-					    <a href="listpayments.php" class="card-link">List Payments</a>
+                          <?php
+					    echo "<a href=\"listtenants.php\" class=\"card-link\">List Tenants</a>";
+					    echo "<a href=\"listpayments.php\" class=\"card-link\">List Payments</a>";
+					    ?>
 					  </div>
 					</div>
 				</div>

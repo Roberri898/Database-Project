@@ -36,6 +36,7 @@
     <tr>
       <th scope="col">Amount</th>
       <th scope="col">Date Due</th>
+        <th scope="col">Tenant</th>
     </tr>
   </thead>
   <tbody>
@@ -43,8 +44,10 @@
   	<?php
 
 
-	$sql = "SELECT Payment_Amount, Payment_Day, Payment_Month, Payment_Year FROM Payment ";
+	$sql = "SELECT Tenant_FirstName, Tenant_LastName,Payment_Amount, Payment_Day, Payment_Month, Payment_Year
+            FROM (Payment NATURAL JOIN Pays) NATURAL Join Tenant";
 	$result = $conn->query($sql);
+
 	
 	if ($result->num_rows > 0) {
 	    // output data of each row
@@ -55,7 +58,8 @@
 			echo '<tr>';
 		    echo '<td>' .   $row['Payment_Amount']  . '</td>';
 		    echo '<td>' .   $row['Payment_Day']  . '/' . $row['Payment_Month'] . '/' . $row['Payment_Year'] . '</td>';
-		    echo '</tr>';
+		    echo '<td>' .   $row['Tenant_FirstName']. " " .   $row['Tenant_LastName'] . '</td>';
+            echo '</tr>';
 	    }
 
 
