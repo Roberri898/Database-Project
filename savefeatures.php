@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Saving Apartment</title>
+		<title>Saving Features</title>
 	</head>
 	<body>
 		<?php 

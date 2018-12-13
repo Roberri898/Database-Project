@@ -40,6 +40,7 @@
 		<body>
 			<h2 style="margin-bottom:15px;">Maintenance</h2>
 			<div class="container linkbutton">
+				<a class="btn btn-primary" href="createmaintenance.php" >Create Maintenance</a>
 				<a class="btn btn-primary" href="apartment.php" >Back to Apartment</a>
 			</div>
 			<?php

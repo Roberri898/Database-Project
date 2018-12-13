@@ -54,21 +54,66 @@
 
 			if ($conn->connect_error)
 			    die("Connection failed: " . $conn->connect_error);
-
-			if(isset($_POST['save']))
-			{
-			    $sql = "INSERT INTO `Maintainance` (`Maintenance_Day`,`Maintenance_Month`,`Maintenance_Year`,`Maintenance_Reason`,`Maintenance_Maintained`)
-			    VALUES ('".$_GET["day"]."','".$_GET["month"]."','".$_GET["year"]."','".$_GET["reason"]."','".$_POST["maintained"]."')";
-
-			    $result = mysqli_query($conn,$sql);
-			}
-			$conn->close();
 		?>
+		<div class="container">
+			<div class="form-group">
+			  	<table class= "table" border='1'>
+			  		<thread>
+						<tr>
+							<th scope= "col">Apartment ID</th>
+							<th scope= "col">Address</th>
+							<th scope= "col">City</th>
+							<th scope= "col">State</th>
+							<th scope= "col">County</th>
+							<th scope= "col">Price</th>
+							<th scope= "col">Occupied</th>
+						</tr>
+					</thread>
+					<tbody>	
+						<?php
+							$sql = "SELECT Apartment_ID, Apartment_Street,Apartment_Number,Apartment_StreetNumber,Apartment_City,Apartment_State,Apartment_County,Apartment_ApartmentPrice,Apartment_Occupied FROM Apartment";
+							$result = $conn->query($sql);
+							if ($result->num_rows > 0) 
+							{
+							    while($row = $result->fetch_assoc()) 
+								{
+						        	echo "<tr>";
+						        	echo "<td>" . $row['Apartment_ID'] . "</td>";
+									echo "<td>" . $row['Apartment_Number'] . " " . $row['Apartment_StreetNumber'] . " " . $row['Apartment_Street'] . "</td>";
+									echo "<td>" . $row['Apartment_City'] . "</td>";
+									echo "<td>" . $row['Apartment_State'] . "</td>";
+									echo "<td>" . $row['Apartment_County'] . "</td>";
+									echo "<td> $" . $row['Apartment_ApartmentPrice'] . "</td>";
+									if ($row["Apartment_Occupied"] == 1)
+									{
+										echo "<td> Yes </td>";
+									}
+									else
+									{
+										echo "<td> No </td>";
+									}
+									echo "</tr>";
+							    }
+							} 
+							else 
+							{
+							    echo "0 results<br>------------------------------------------------<br>";
+							}
+							echo "</div></div></div>";
+							$conn->close();
+						?>
+					</tbody>
+				</table>
+			</div>       
+		</div>
 
 		<div class="container">
-				<form action="createmaintenance.php" method="get"> 
+				<form action="createmaintenance_send.php" method="POST"> 
 				  <div class="form-group">
 				  	<div class="row">
+				  		<div class="col-sm">
+					    	<label>Apartment ID</label>
+					    </div>
 				  		<div class="col-sm">
 					    	<label>Month</label>
 					    </div>
@@ -84,16 +129,19 @@
 					</div>
 					<div class = "row">
 						<div class="col-sm">		
-							<input type="" name="month">
+							<input type="number" name="apID">
 						</div>
 						<div class="col-sm">		
-							<input type="" name="day">
+							<input type="number" name="month">
 						</div>
 						<div class="col-sm">		
-							<input type="" name="year">
+							<input type="number" name="day">
 						</div>
 						<div class="col-sm">		
-							<input type="" name="maintened">
+							<input type="number" name="year">
+						</div>
+						<div class="col-sm">		
+							<input type="number" name="main">
 						</div>	
 					</div>    
 					<div class = "row">

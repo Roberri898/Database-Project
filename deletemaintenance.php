@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Maintenance Edit</title>
+		<title>Maintenance Delete</title>
 		<title></title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 		<style type="text/css">
@@ -52,23 +52,21 @@
 		</style>
 		
 		<body>
-			<h2 style="margin-bottom:15px;">Maintenance Edit</h2>
+			<h2 style="margin-bottom:15px;">Are you sure this is resolved?</h2>
 			<?php
 				$servername = "localhost";
 				$username = "root";
 				$password = "";
 				$dbname = "landlord";
 				$conn = new mysqli($servername, $username, $password, $dbname);
-				$mid = $_GET['mid'];
+				$mid = $_GET['mainid'];
 
 				if ($conn->connect_error)
 				    die("Connection failed: " . $conn->connect_error);
 			?>
 			<div class="container linkbutton">
-				<a class="btn btn-primary" href="Maintenance_v2.php" >Back to Maintenance</a><br>
-			</div>
-			<div class="container linkbutton">
-				<a class="btn btn-primary redbutton" href="deletemaintenance.php?mainid=<?php echo $_GET['mid']; ?>">RESOLVE</a>
+				<a class="btn btn-primary" href="maintenance_v2.php">Back to Maintenance</a>
+				<a class="btn btn-primary" href="maintenanceedit.php?mid=<?php echo $_GET['mainid']; ?>">Return to Maintenance Edit</a> <br>
 			</div>
 			<div class="container">
 				<div class="form-group">
@@ -127,53 +125,9 @@
 					</table>
 				</div>       
 			</div>
-			<div class="container">
-				<form action="savemaintenance.php" method="post">
-				  <div class="form-group">
-				  	<div class="row">
-				  		<div class="col-sm">
-					    	<label>Month</label>
-					    </div>
-					    <div class="col-sm">
-					    	<label>Day</label>
-					    </div>
-					    <div class="col-sm">
-					    	<label>Year</label>
-					    </div>
-					    <div class="col-sm">
-					    	<label>Maintained? (0/1)</label>			    
-					    </div>
-					</div>
-					<div class = "row">
-						<div class="col-sm">		
-							<input type="" name="month" value= "<?php echo $var1; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="day" value= "<?php echo $var2; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="year" value= "<?php echo $var3; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="main" value= "<?php echo $var4; ?>">
-						</div>
-						
-					</div>    
-					<div class = "row">
-						<div class="col-sm">
-					    	<label>Reason</label>			   
-					    </div>
-					</div>
-					<div class = "row">
-						<div class="col-sm">		
-							<input type="text"  name="reason" value= "<?php echo $var5; ?>">
-						</div>
-					</div>    
-				  </div>
-				  <div class="container linkbutton">
-				  	<button type="submit" class="btn btn-primary">Submit</button>
-				  </div>
-				</form>
-			</div>			
+			<div class="container linkbutton">
+				<a class="btn btn-primary" href="deletemaintenance_confirm.php?mid=<?php echo $_GET['mainid']; ?>">CONFIRM RESOLVE</a>
+			</div>
 		</body>
+	</html>	
 </html>
