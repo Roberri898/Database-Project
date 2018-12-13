@@ -52,7 +52,7 @@
 		</style>
 		
 		<body>
-			<h2 style="margin-bottom:15px;">Apartment Edit</h2>
+			<h2 style="margin-bottom:15px;">Are you sure you want to delete this?</h2>
 			<?php
 				$servername = "localhost";
 				$username = "root";
@@ -65,10 +65,8 @@
 				    die("Connection failed: " . $conn->connect_error);
 			?>
 			<div class="container linkbutton">
-				<a class="btn btn-primary" href="apartment.php">Back to Apartments</a><br>
-			</div>
-			<div class="container linkbutton">
-				<a class="btn btn-primary redbutton" href="deleteapartment.php?apid=<?php echo $_GET['apid']; ?>">DELETE APARTMENT</a>
+				<a class="btn btn-primary" href="apartment.php">Back to Apartments</a>
+				<a class="btn btn-primary" href="apartmentedit.php?apid=<?php echo $_GET['apid']; ?>">Return to Edit</a> <br>
 			</div>
 			<div class="container">
 				<div class="form-group">
@@ -98,17 +96,10 @@
 								        	echo "<tr>";
 									        echo "<td>" . $row['Apartment_ID'] . "</td>";
 											echo "<td>" . $row['Apartment_Number'] . " " . $row['Apartment_StreetNumber'] . " " . $row['Apartment_Street'] . "</td>";
-											$var1 = $row['Apartment_Number'];
-											$var2 = $row['Apartment_Street'];
-											$var3 = $row['Apartment_StreetNumber'];
 											echo "<td>" . $row['Apartment_City'] . "</td>";
-											$var4 = $row['Apartment_City'];
 											echo "<td>" . $row['Apartment_State'] . "</td>";
-											$var5 = $row['Apartment_State'];
 											echo "<td>" . $row['Apartment_County'] . "</td>";
-											$var6 = $row['Apartment_County'];
 											echo "<td> $" . $row['Apartment_ApartmentPrice'] . "</td>";
-											$var7 = $row['Apartment_ApartmentPrice'];
 											if ($row["Apartment_Occupied"] == 1)
 											{
 												echo "<td> Yes </td>";
@@ -117,7 +108,6 @@
 											else
 											{
 												echo "<td> No </td>";
-												$var8 = $row['Apartment_Occupied'];
 											}
 											echo "</tr>";
 								        }
@@ -133,74 +123,9 @@
 					</table>
 				</div>       
 			</div>
-			<div class="container">	
-				<div class="form-group">
-				  	<div class="row">
-				  		<div class="col-sm">
-					    	<label>ID</label>
-					    </div>
-				  		<div class="col-sm">
-					    	<label>Address #</label>
-					    </div>
-					    <div class="col-sm">
-					    	<label>Street</label>			    
-					    </div>
-					    <div class="col-sm">
-					    	<label>Street Number</label>			   
-					    </div>
-					    <div class="col-sm">
-					    	<label>City</label>			    
-					    </div>
-					    <div class="col-sm">
-					    	<label>State</label>			    
-					    </div>
-					    <div class="col-sm">
-					    	<label>County</label>			    
-					    </div>
-					    <div class="col-sm">
-					    	<label>Price</label>			    
-					    </div>
-					    <div class="col-sm">
-					    	<label>Occupied? (0/1)</label>
-					    </div>
-					</div>
-					</div>
-						<form action= "saveapartment.php" method="POST">'
-						<div class = "row">
-							<div class="col-sm">
-								<input type="number" name="apid" value= "<?php echo $apartid; ?>" readonly>
-							</div>
-							<div class="col-sm">
-								<input type="number" name="num" value= "<?php echo $var1; ?>">
-							</div>
-							<div class="col-sm">	
-								<input type="text" name="street" value= "<?php echo $var2; ?>">
-							</div>
-							<div class="col-sm">		
-								<input type="number" name="stnum" value= "<?php echo $var3; ?>">
-							</div>
-							<div class="col-sm">		
-								<input type="text" name="city" value= "<?php echo $var4; ?>">
-							</div>
-							<div class="col-sm">		
-								<input type="text" name="state" value= "<?php echo $var5; ?>">
-							</div>
-							<div class="col-sm">		
-								<input type="text" name="county" value= "<?php echo $var6; ?>">
-							</div>
-							<div class="col-sm">		
-								<input type="number" name="price" value= "<?php echo $var7; ?>">
-							</div>
-							<div class="col-sm">		
-								<input type="number" name="occ" value= "<?php echo $var8; ?>">
-							</div>	
-						</div>        
-					</div>
-					<div class="container linkbutton">
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</div>
-				</form>			
-			</div>		
+			<div class="container linkbutton">
+				<a class="btn btn-primary" href="deleteapartment_confirm.php?apid=<?php echo $_GET['apid']; ?>">CONFIRM DELETE</a>
+			</div>
 		</body>
-		<?php $conn->close(); ?>
+	</html>	
 </html>

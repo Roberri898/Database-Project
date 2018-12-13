@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Features Edit</title>
+		<title>Apartment Edit</title>
 		<title></title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 		<style type="text/css">
@@ -45,10 +45,14 @@
 			 	padding-left: 5px;
 			 	padding-right: 5px;
 			}
+			.redbutton
+			{
+				background-color: #f44336;
+			}
 		</style>
 		
 		<body>
-			<h2 style="margin-bottom:15px;">Features Edit</h2>
+			<h2 style="margin-bottom:15px;">Apartment Edit</h2>
 			<?php
 				$servername = "localhost";
 				$username = "root";
@@ -61,7 +65,7 @@
 				    die("Connection failed: " . $conn->connect_error);
 			?>
 			<div class="container linkbutton">
-				<a class="btn btn-primary" href="features_v2.php" >Back to Features</a><br>
+				<a class="btn btn-primary" href="features_v2.php">Back to Features</a><br>
 			</div>
 			<div class="container">
 				<div class="form-group">
@@ -69,12 +73,12 @@
 				  		<thread>
 							<tr>
 								<th scope= "col">ID</th>
-								<th scope= "col">Apartment</th>
+								<th scope= "col">Address</th>
 								<th scope= "col">Square Footage</th>
 								<th scope= "col">Bedrooms</th>
 								<th scope= "col">Bathrooms</th>
 								<th scope= "col">Pool</th>
-								<th scope= "col">Amenities</th>
+								<th scope= "col">Amenities/th>
 							</tr>
 						</thread>
 						<tbody>	
@@ -110,54 +114,61 @@
 								    echo "0 results<br>------------------------------------------------<br>";
 								}
 								echo "</div></div></div>";
-								$conn->close();
 							?>
 						</tbody>
 					</table>
 				</div>       
 			</div>
-			<div class="container">
-				<form action="savefeature.php" method="post">
-				  <div class="form-group">
+			<div class="container">	
+				<div class="form-group">
 				  	<div class="row">
 				  		<div class="col-sm">
-					    	<label>Square Footage</label>
+					    	<label>ID</label>
 					    </div>
 					    <div class="col-sm">
-					    	<label>Bedrooms</label>			    
+					    	<label>Square Footage</label>			    
 					    </div>
 					    <div class="col-sm">
-					    	<label>Bathrooms</label>			   
+					    	<label>Bedrooms</label>			   
 					    </div>
 					    <div class="col-sm">
-					    	<label>Pools</label>			    
+					    	<label>Bathrooms</label>			    
+					    </div>
+					    <div class="col-sm">
+					    	<label>Pool</label>			    
 					    </div>
 					    <div class="col-sm">
 					    	<label>Amenities</label>			    
 					    </div>
 					</div>
-					<div class = "row">
-						<div class="col-sm">
-							<input type="" name="sf" value= "<?php echo $var1; ?>">
-						</div>
-						<div class="col-sm">	
-							<input type="" name="bed" value= "<?php echo $var2; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="bath" value= "<?php echo $var3; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="pool" value= "<?php echo $var4; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="am" value= "<?php echo $var5; ?>">
-						</div>
-					</div>        
-				  </div>
-				  <div class="container linkbutton">
-				  	<button type="submit" class="btn btn-primary">Submit</button>
-				  </div>
-				</form>
-			</div>			
+					</div>
+						<form action= "savefeatures.php" method="POST">'
+						<div class = "row">
+							<div class="col-sm">
+								<input type="number" name="featid" value= "<?php echo $featid; ?>" readonly>
+							</div>
+							<div class="col-sm">
+								<input type="number" name="sq" value= "<?php echo $var1; ?>">
+							</div>
+							<div class="col-sm">	
+								<input type="number" name="bed" value= "<?php echo $var2; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="number" name="bath" value= "<?php echo $var3; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="number" name="pool" value= "<?php echo $var4; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="number" name="am" value= "<?php echo $var5; ?>">
+							</div>
+						</div>        
+					</div>
+					<div class="container linkbutton">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>			
+			</div>		
 		</body>
+		<?php $conn->close(); ?>
 </html>

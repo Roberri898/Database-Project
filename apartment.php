@@ -84,11 +84,11 @@
 										echo "<td>" . $row['Apartment_State'] . "</td>";
 										echo "<td>" . $row['Apartment_County'] . "</td>";
 										echo "<td> $" . $row['Apartment_ApartmentPrice'] . "</td>";
-										if ($row["Apartment_Occupied"] == 0)
+										if ($row["Apartment_Occupied"] == 1)
 										{
 											echo "<td> Yes </td>";
 										}
-										else if ($row["Apartment_Occupied"] == 1)
+										else
 										{
 											echo "<td> No </td>";
 										}
