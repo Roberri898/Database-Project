@@ -43,6 +43,7 @@
 				<a class="btn btn-primary" href="landlorddashboard.php" >Back to Landlord Dashboard</a>
 			</div>
 			<div class="container linkbutton">
+				<a class="btn btn-primary" href="createapartment.php" >Create Apartment</a>
 				<a class="btn btn-primary" href="features_v2.php" >Features</a>
 				<a class="btn btn-primary" href="maintenance_v2.php" >Maintenance</a>
 			</div>
@@ -105,6 +106,7 @@
 						</tbody>
 					</table>
 				</div>       
-			</div>			
+			</div>
+						
 		</body>
 </html>

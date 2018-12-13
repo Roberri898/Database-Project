@@ -126,10 +126,12 @@
 					</table>
 				</div>       
 			</div>
-			<div class="container">
-				<form action="saveapartment.php?apid=<?php echo $apid; ?>" method="post">
-				  <div class="form-group">
+			<div class="container">	
+				<div class="form-group">
 				  	<div class="row">
+				  		<div class="col-sm">
+					    	<label>ID</label>
+					    </div>
 				  		<div class="col-sm">
 					    	<label>Address #</label>
 					    </div>
@@ -155,38 +157,42 @@
 					    	<label>Occupied? (0/1)</label>
 					    </div>
 					</div>
-					<div class = "row">
-						<div class="col-sm">
-							<input type="" name="num" value= "<?php echo $var1; ?>">
-						</div>
-						<div class="col-sm">	
-							<input type="" name="street" value= "<?php echo $var2; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="stnum" value= "<?php echo $var3; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="city" value= "<?php echo $var4; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="state" value= "<?php echo $var5; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="county" value= "<?php echo $var6; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="price" value= "<?php echo $var7; ?>">
-						</div>
-						<div class="col-sm">		
-							<input type="" name="occ" value= "<?php echo $var8; ?>">
-						</div>	
-					</div>        
-				</div>
-				<div class="container linkbutton">
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</div>
-				<?php $conn->close(); ?>
-				</form>
-			</div>			
+					</div>
+						<form action= "saveapartment.php" method="POST">'
+						<div class = "row">
+							<div class="col-sm">
+								<input type="" name="apid" value= "<?php echo $apartid; ?>" readonly>
+							</div>
+							<div class="col-sm">
+								<input type="" name="num" value= "<?php echo $var1; ?>">
+							</div>
+							<div class="col-sm">	
+								<input type="" name="street" value= "<?php echo $var2; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="" name="stnum" value= "<?php echo $var3; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="" name="city" value= "<?php echo $var4; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="" name="state" value= "<?php echo $var5; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="" name="county" value= "<?php echo $var6; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="" name="price" value= "<?php echo $var7; ?>">
+							</div>
+							<div class="col-sm">		
+								<input type="" name="occ" value= "<?php echo $var8; ?>">
+							</div>	
+						</div>        
+					</div>
+					<div class="container linkbutton">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>			
+			</div>		
 		</body>
 </html>

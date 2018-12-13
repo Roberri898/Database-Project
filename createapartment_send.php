@@ -28,7 +28,7 @@
 			. $_POST['oc'] . "');";
 			if (mysqli_query($conn, $sql)) 
 			{
-			    echo "Record updated successfully";
+			    echo "Apartment Data has been recorded";
 			} else {
 			    echo "Error updating record: " . mysqli_error($conn);
 			}
