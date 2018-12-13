@@ -9,7 +9,9 @@
 
 
 	<style type="text/css">
-		
+		body{
+			text-align: center;
+		}
 
 
 
@@ -135,24 +137,26 @@
   </div>
 </nav>
 
-
+	
+	<h2>Tenant Dashboard</h2>
 
 	<div class="container">
+
 
 		<div class="row">
 			<div class="col">
 
-				<div class="card" style="width: 18rem; margin:20px">
+				<div class="card" style="margin:20px; width:70%"">
 
 			
-				  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+				  <img class="card-img-top" " src="./user-icon-image-placeholder-300-grey.jpg" alt="Card image cap">
 				  <ul class="list-group list-group-flush">
 				    <li class="list-group-item"><?php echo $tenantFirstName ?></li>
 				    <li class="list-group-item"><?php echo $tenantLastName ?></li>
 				  </ul>
 				  <div class="card-body">
 				    <a href="#" class="card-link" onclick="tenantlistcomplaints();">View Complaints</a><br>
-				    <a href="#" class="card-link">View Profile</a><br>
+				    <a href="#" class="card-link" onclick="tenantprofile();">View Profile</a><br>
 				    <a href="#" class="card-link" onclick="tenantlistpayments();">View Payments</a>
 
 				  </div>
@@ -162,7 +166,7 @@
 		
 
 			<div class="col">
-				<div class="card" style="width: 18rem; margin:20px">
+				<div class="card" style="margin:20px">
 				  <div class="card-body">
 				    <h5 class="card-title">Apartment</h5>
 				  </div>
@@ -203,6 +207,12 @@
 			
 		</form>
 
+		<form action="./viewprofile.php" method="post" id="tenant_profile">
+
+			<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
+			
+		</form>
+
 
 	</div>
 
@@ -225,6 +235,11 @@
 	function tenantlistcomplaints(){
 
 		document.getElementById("tenant_complaints").submit();
+	}
+
+	function tenantprofile(){
+
+		document.getElementById("tenant_profile").submit();
 	}
 
 

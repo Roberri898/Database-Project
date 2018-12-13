@@ -56,7 +56,7 @@
 	</nav>
 
 
-	<h2 align="center">Complaints</h2>
+	<h2 align="center">Profile</h2>
 
 	<div class="container">
   		<div class="row">
@@ -65,17 +65,16 @@
   			<div class="col">
 
 		<div class="card" style="">
-	  <div class="card-body">
-	    <h5 class="card-title">Issues</h5>
-	  </div>
 		
 	  	<div class="card-body">
 
 		<table class="table">
 		  <thead>
 		    <tr>
-		      <th scope="col">Date</th>
-		      <th scope="col">Issue</th>
+		      <th scope="col">First Name</th>
+		      <th scope="col">Last Name</th>
+		      <th scope="col">Age</th>
+		      <th scope="col">Gender</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -85,22 +84,30 @@
 				$tenantid = $_POST['tenantid'];
 
 
-				$sql = "SELECT Complaint_Issue, Complaint_Day, Complaint_Month, Complaint_Year, Complaint_Resolved FROM Complaint";
+				$sql = "SELECT Tenant_FirstName, Tenant_LastName, Tenant_Age, Tenant_Gender FROM Tenant WHERE Tenant_ID = '$tenantid'";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        $complaintissue = $row["Complaint_Issue"];
-				        $complaintday = $row["Complaint_Day"];
-				        $complaintmonth = $row["Complaint_Month"];
-				        $complaintyear = $row["Complaint_Year"];
-				    	$complaintresolved = $row["Complaint_Resolved"];
+				        $firstname = $row["Tenant_FirstName"];
+				        $lastname = $row["Tenant_LastName"];
+				        $age = $row["Tenant_Age"];
+
+						if ($row["Tenant_Gender"] == 1) {
+		    				$gender = 'Female';
+						}
+						if ($row["Tenant_Gender"] == 0) {
+		    				$gender = 'Male';
+						}
+
 
 
 				    	echo '<tr>';
-					      echo '<td>' . $complaintday . '/'  . $complaintmonth . '/' . $complaintyear  .  '</td>';
-					      echo '<td>' .  $complaintissue .  '</td>';
+					      echo '<td>' . $firstname  .  '</td>';
+					      echo '<td>' .  $lastname .  '</td>';
+					      echo '<td>' .  $age .  '</td>';
+					      echo '<td>' .  $gender .  '</td>';
 					    echo '</tr>';
 
 				    }
@@ -117,7 +124,7 @@
 		</div>
 
 		  <div class="card-body">
-	    <a href="#" class="card-link" onclick="createcomplaint();">Create Complaint</a>
+	    <a href="#" class="card-link" onclick="editprofile();">Edit Profile</a>
 		  </div>
 		</div>
 
@@ -138,7 +145,7 @@
 	?>
 
 
-	<form action="./createcomplaint.php" method="post" id="createcomplaintlink" style="display:none;">
+	<form action="./editprofile.php" method="post" id="edit_profile" style="display:none;">
 
 		<input type="text" name="tenantid" value="<?php echo $tenantid ?> ">
 		
@@ -158,8 +165,8 @@
 <script type="text/javascript">
 
 
-	function createcomplaint(){
-		document.getElementById("createcomplaintlink").submit();
+	function editprofile(){
+		document.getElementById("edit_profile").submit();
 
 	}
 
